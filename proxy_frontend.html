@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Embedded Web Proxy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+    #proxy-app input {
+      width: 60%%;
+      padding: 10px;
+      font-size: 16px;
+    }
+    #proxy-app button {
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #proxy-frame {
+      width: 90%%;
+      height: 80vh;
+      border: 1px solid #ccc;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="proxy-app">
+    <h1>Browse Through Proxy</h1>
+    <input id="proxy-url" type="text" placeholder="Enter a full URL like https://example.com" />
+    <button onclick="loadViaProxy()">Go</button>
+    <iframe id="proxy-frame"></iframe>
+  </div>
+  <script>
+    function loadViaProxy() {
+      const input = document.getElementById('proxy-url');
+      const url = input.value.trim();
+      if (!url.startsWith("http")) {
+        alert("Please enter a full URL including https://");
+        return;
+      }
+      document.getElementById('proxy-frame').src = `/proxy?url=${encodeURIComponent(url)}`;
+    }
+  </script>
+</body>
+</html>
