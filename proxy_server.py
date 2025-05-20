@@ -6,6 +6,10 @@ import os
 app = Flask(__name__)
 CORS(app)  # Enable CORS for frontend access
 
+@app.route('/')
+def index():
+    return "Proxy Server is running!"
+
 @app.route('/proxy')
 def proxy():
     url = request.args.get('url')
