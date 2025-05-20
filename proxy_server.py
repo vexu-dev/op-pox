@@ -10,7 +10,7 @@ CORS(app)  # Enable CORS for frontend access
 def index():
     return "Proxy Server is running!"
 
-@app.route('/proxy')
+@app.route('/go')
 def proxy():
     url = request.args.get('url')
     if not url:
